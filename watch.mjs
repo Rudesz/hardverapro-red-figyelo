@@ -4,9 +4,15 @@ import { readFile, writeFile } from 'node:fs/promises';
 
 const LIST_URL =
   'https://hardverapro.hu/aprok/hardver/merevlemez_ssd/merevlemez/asztali_hdd_3_5/8tb_es_nagyobb/index.html';
-// Önálló "red" szó. Unicode-betűhatár kell, mert a \b az ékezetes betűt nem-betűnek látja
-// (a "kéred" illeszkedne), részszöveg-keresésnél pedig az "eredeti" is találat lenne.
-const KEYWORD = /(?<![\p{L}\p{N}])red(?![\p{L}\p{N}])/iu;
+// "red" önállóan vagy egybeírt változatban (WDRED, WD-Red, RedPro, RedPlus, Redek), illetve
+// WD Red típusszám (Red Plus: WD80EFAX, Red Pro: WD8003FFBX / WD141KFGX).
+// Unicode-betűhatár kell, mert a \b az ékezetes betűt nem-betűnek látja (a "kéred" illeszkedne),
+// részszöveg-keresésnél pedig az "eredeti" és a "redundáns" is találat lenne.
+const KEYWORD = new RegExp(
+  String.raw`(?<!\p{L})(?:wd[\s._-]?)?red(?:[\s._-]?(?:plus|pro))?(?:ek|et|eket|del)?(?!\p{L})` +
+    String.raw`|(?<![a-z\d])wd\d{2,4}(?:ef|ff|kf)[a-z]{2}(?![a-z])`,
+  'iu',
+);
 const STATE_FILE = new URL('./seen.json', import.meta.url);
 const NTFY_URL = 'https://ntfy.sh/';
 const USER_AGENT = 'Mozilla/5.0 (compatible; hardverapro-red-figyelo/1.0)';
