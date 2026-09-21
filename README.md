@@ -12,6 +12,7 @@ kategóriájában új hirdetés jelenik meg, amelynek a címében szerepel a „
   alapján is talál (pl. WD80EFAX, WD8003FFBX, WD141KFGX). Az „eredeti”, a „kéred” és a „redundáns” nem számít találatnak.
 - A már látott hirdetések azonosítóit a `seen.json` tárolja. Így egy előresorolt hirdetésről nem jön újra értesítés.
 - A jegelt hirdetéseket a szkript kihagyja. Ha az eladó újraaktiválja őket, akkor jön róluk értesítés.
+- A vételi hirdetéseket („Red HDD-t keresek”, az ár helyén „Keresem”) is kihagyja. Az ingyenes hirdetésekről küld értesítést.
 - Ha a szkript egy hirdetést sem talál (megváltozott az oldal, vagy blokkolják a lekérést), a futás hibával áll le, és a GitHub e-mailt küld.
 
 ## Beállítás

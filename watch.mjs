@@ -9,7 +9,7 @@ const LIST_URL =
 // Unicode-betűhatár kell, mert a \b az ékezetes betűt nem-betűnek látja (a "kéred" illeszkedne),
 // részszöveg-keresésnél pedig az "eredeti" és a "redundáns" is találat lenne.
 const KEYWORD = new RegExp(
-  String.raw`(?<!\p{L})(?:wd[\s._-]?)?red(?:[\s._-]?(?:plus|pro))?(?:ek|et|eket|del)?(?!\p{L})` +
+  String.raw`(?<!\p{L})(?:wd[\s._-]?)?red(?:[\s._-]?(?:plusz?|pro))?(?:ek|et|eket|del)?(?!\p{L})` +
     String.raw`|(?<![a-z\d])wd\d{2,4}(?:ef|ff|kf)[a-z]{2}(?![a-z])`,
   'iu',
 );
@@ -68,6 +68,8 @@ function parseAds(html) {
         city: city ? decodeEntities(city).trim() : null,
         // Jegelt (szüneteltetett) hirdetés: kihagyjuk, így újraaktiváláskor jön róla értesítés.
         iced: start[1].includes('uad-status-iced'),
+        // Vételi hirdetés ("Red HDD-t keresek"): az ár helyén "Keresem" áll.
+        wanted: price?.trim() === 'Keresem',
       };
     })
     .filter(Boolean);
@@ -119,7 +121,7 @@ async function main() {
   if (ads.length === 0) {
     throw new Error('0 hirdetés a listaoldalon: megváltozott az oldal szerkezete, vagy blokkolják a lekérést.');
   }
-  const matches = ads.filter((ad) => !ad.iced && KEYWORD.test(ad.title));
+  const matches = ads.filter((ad) => !ad.iced && !ad.wanted && KEYWORD.test(ad.title));
   const now = new Date().toISOString();
   let state = await loadState();
 
