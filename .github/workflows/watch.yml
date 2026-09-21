@@ -2,7 +2,8 @@ name: Red HDD figyelő
 
 on:
   schedule:
-    - cron: '*/10 * * * *'
+    # :03, :13, :23… – az egész órás időpontokban torlódik a GitHub ütemezője.
+    - cron: '3-59/10 * * * *'
   workflow_dispatch:
 
 permissions:
