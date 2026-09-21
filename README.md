@@ -6,7 +6,11 @@ kategóriájában új hirdetés jelenik meg, amelynek a címében szerepel a „
 
 ## Működés
 
-- A GitHub Actions 10 percenként lefuttatja a `watch.mjs` szkriptet (Node 24, nincs külső függőség).
+- A `watch.mjs` szkript (Node 24, nincs külső függőség) GitHub Actionsben fut, 10 percenként.
+  Az indítást a [cron-job.org](https://console.cron-job.org) végzi a GitHub API-n keresztül (`workflow_dispatch`),
+  mert a GitHub saját ütemezője ennél a repónál nem indult el. A `schedule` tartaléknak bent maradt.
+  A cron-job.org egy csak erre a repóra szóló, *Actions: Read and write* jogú tokennel dolgozik. Ha a token lejár,
+  a cron-job.org hibát jelez; ilyenkor új tokent kell létrehozni, és be kell írni a cronjob `Authorization` fejlécébe.
 - A szkript letölti a lista első oldalát, és kiválogatja azokat a hirdetéseket, amelyek címében szerepel a „red”.
   Egybeírt és toldalékos alakokban is felismeri (WDRED, WD-Red, RedPro, RedPlus, Redek), és WD Red típusszám
   alapján is talál (pl. WD80EFAX, WD8003FFBX, WD141KFGX). Az „eredeti”, a „kéred” és a „redundáns” nem számít találatnak.
