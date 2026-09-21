@@ -1,0 +1,45 @@
+name: Red HDD figyelő
+
+on:
+  schedule:
+    - cron: '*/10 * * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: watch
+  cancel-in-progress: false
+
+jobs:
+  watch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+
+      - name: Hirdetések ellenőrzése
+        run: node watch.mjs
+        env:
+          NTFY_TOPIC: ${{ secrets.NTFY_TOPIC }}
+
+      # Hiba esetén is fut: ha egy értesítés már kiment, mielőtt a szkript elhasalt, azt is mentjük.
+      - name: Állapot mentése
+        if: ${{ !cancelled() }}
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          if [ -n "$(git status --porcelain -- seen.json)" ]; then
+            git add seen.json
+            git commit -m 'Látott hirdetések frissítése'
+            git push
+          elif [ $(( $(date +%s) - $(git log -1 --format=%ct) )) -gt $(( 45 * 86400 )) ]; then
+            # A GitHub 60 nap inaktivitás után kikapcsolja az ütemezett futást nyilvános repóban.
+            git commit --allow-empty -m 'keepalive'
+            git push
+          fi
