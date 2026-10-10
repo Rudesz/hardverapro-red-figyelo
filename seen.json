@@ -1,54 +1,23 @@
 {
-  "7669065": {
-    "title": "!ÚJ BONTATLAN! Western Digital Red plus 8TB winchester!",
-    "firstSeen": "2026-09-21T12:46:43.443Z"
-  },
-  "7680850": {
-    "title": "WD Red Pro NAS Hard Drive - 8TB",
-    "firstSeen": "2026-09-21T13:06:52.736Z"
-  },
-  "7683516": {
-    "title": "WD RED 8TB - HIBÁS",
-    "firstSeen": "2026-09-21T12:38:01.637Z"
-  },
-  "7714568": {
-    "title": "WD Red Plus 8TB NAS HDD (WD80EFAX), CMR, 256 MB cache, 0 hibás szektor, 100/100",
-    "firstSeen": "2026-09-21T12:38:01.637Z"
-  },
-  "7714619": {
-    "title": "WD Red Plus 8TB NAS HDD (WD80EFAX), CMR, 256 MB cache, 0 hibás szektor, 100/100",
-    "firstSeen": "2026-09-21T12:38:01.637Z"
-  },
-  "7718502": {
-    "title": "WD Red Plus 12TB Garanciás 2027.12.14. HDD",
-    "firstSeen": "2026-09-21T19:20:30.645Z"
-  },
-  "7719613": {
-    "title": "43 Bad Sector / Eladó 8TB Western Digital Red Plus 3.5\" HDD",
-    "firstSeen": "2026-09-23T04:20:27.929Z"
-  },
-  "7723188": {
-    "title": "Eladó Western Digital WD Red Pro 8TB",
-    "firstSeen": "2026-09-25T07:00:51.248Z"
-  },
-  "7724708": {
-    "title": "Western Digital Red Plus 8TB - WD80EFPX - Új, 2 év garancia - Eladó",
-    "firstSeen": "2026-09-26T09:10:32.710Z"
-  },
-  "7724744": {
-    "title": "Western Digital Red Plus 12TB NAS merevlemez (WD120EFBX) Kiváló állapotban",
-    "firstSeen": "2026-09-26T09:30:37.295Z"
-  },
-  "7737117": {
-    "title": "BESZÁMÍTÁS! 12TB WD Red Plus 3,5\" SATA merevlemez garanciával hibátlan működéssel",
-    "firstSeen": "2026-10-04T20:50:28.216Z"
-  },
-  "7737118": {
-    "title": "BESZÁMÍTÁS! 8TB WD Red Plus 3,5\" SATA merevlemez garanciával hibátlan működéssel",
-    "firstSeen": "2026-10-04T20:50:28.216Z"
-  },
-  "7741041": {
-    "title": "WD 16TB WD161KFGX",
-    "firstSeen": "2026-10-07T14:40:28.776Z"
+  "version": 2,
+  "ads": {
+    "7716573": {
+      "title": "Western Digital HGST Ultrastar He12 12TB (HUH721212ALE600)",
+      "priceFt": 60000,
+      "ok": false,
+      "problems": [
+        "uncorrectable: 2"
+      ],
+      "firstSeen": "2026-10-10T21:52:51.000Z"
+    },
+    "7721133": {
+      "title": "Seagate Barracuda 8TB, WD Blue 3/4/6 TB, Toshiba P300 4TB HDD eladó",
+      "priceFt": 2000,
+      "ok": false,
+      "problems": [
+        "asztali/SMR típus"
+      ],
+      "firstSeen": "2026-10-10T21:52:51.000Z"
+    }
   }
 }
