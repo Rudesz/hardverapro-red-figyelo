@@ -1,8 +1,25 @@
-# HardverApró Red HDD figyelő
+# HardverApró HDD ár-figyelő
 
 Push értesítést küld a telefonra ([ntfy](https://ntfy.sh)), ha a HardverApró
 [Asztali HDD 3,5" – 8 TB és nagyobb](https://hardverapro.hu/aprok/hardver/merevlemez_ssd/merevlemez/asztali_hdd_3_5/8tb_es_nagyobb/index.html)
-kategóriájában új hirdetés jelenik meg, amelynek a címében szerepel a „red” szó (WD Red, Red Plus, Red Pro…).
+kategóriájában jó ár-érték arányú, hibátlan lemez jelenik meg.
+
+## Mi számít jónak
+
+A listaoldal alapján (a határok a `watch.mjs` elején állíthatók):
+
+- az ár legfeljebb 72 000 Ft (`MAX_PRICE`);
+- a címben legalább 8 TB szerepel (`MIN_TB`); több méretnél a legkisebbel számol;
+- legfeljebb 6 500 Ft/TB (`MAX_FT_PER_TB`).
+
+Ha ezen átmegy, letölti a hirdetés leírását, és kiszűri:
+
+- a hibásként hirdetett lemezt („HIBÁS” a címben; a „0 hibás szektor” nem számít);
+- az asztali és SMR típusokat (Barracuda, ST…DM, WD Blue, WD…EZAZ, Archive);
+- ha a leírás 0-nál több reallocated, pending, uncorrectable (198) vagy hibás szektort említ;
+- ha az üzemóra több mint 60 000 (`MAX_HOURS`). Ha a leírás nem adja meg, az értesítés jelzi, hogy kérdezz rá.
+
+A képeken lévő SMART-képernyőt nem látja, azt neked kell megnézned.
 
 ## Működés
 
@@ -11,12 +28,13 @@ kategóriájában új hirdetés jelenik meg, amelynek a címében szerepel a „
   mert a GitHub saját ütemezője ennél a repónál nem indult el. A `schedule` tartaléknak bent maradt.
   A cron-job.org egy csak erre a repóra szóló, *Actions: Read and write* jogú tokennel dolgozik. Ha a token lejár,
   a cron-job.org hibát jelez; ilyenkor új tokent kell létrehozni, és be kell írni a cronjob `Authorization` fejlécébe.
-- A szkript letölti a lista első oldalát, és kiválogatja azokat a hirdetéseket, amelyek címében szerepel a „red”.
-  Egybeírt és toldalékos alakokban is felismeri (WDRED, WD-Red, RedPro, RedPlus, Redek), és WD Red típusszám
-  alapján is talál (pl. WD80EFAX, WD8003FFBX, WD141KFGX). Az „eredeti”, a „kéred” és a „redundáns” nem számít találatnak.
-- A már látott hirdetések azonosítóit a `seen.json` tárolja. Így egy előresorolt hirdetésről nem jön újra értesítés.
-- A jegelt hirdetéseket a szkript kihagyja. Ha az eladó újraaktiválja őket, akkor jön róluk értesítés.
-- A vételi hirdetéseket („Red HDD-t keresek”, az ár helyén „Keresem”) is kihagyja. Az ingyenes hirdetésekről küld értesítést.
+- A HardverApró az első lekérésre sütit állít be és átirányít; a szkript ezt kézzel követi.
+- A leírásokat egyenként, 3 mp szünettel tölti le, és csak az új vagy átárazott hirdetésekét, mert a gyors
+  egymás utáni lekérésre az oldal letilt.
+- A már értékelt hirdetéseket a `seen.json` tárolja (ár és eredmény). Ha egy hirdetés ára változik, újra értékeli.
+- A jegelt hirdetéseket kihagyja. Ha az eladó újraaktiválja őket, akkor értékeli és jelzi őket.
+- A vételi hirdetéseket (az ár helyén „Keresem”) kihagyja.
+- Első futáskor (vagy ha a `seen.json` régi formátumú) egy összefoglalót küld a most fent lévő jó ajánlatokról.
 - Ha a szkript egy hirdetést sem talál (megváltozott az oldal, vagy blokkolják a lekérést), a futás hibával áll le, és a GitHub e-mailt küld.
 
 ## Beállítás
@@ -32,7 +50,5 @@ gh workflow run watch.yml          # azonnali ellenőrzés
 gh run list --workflow watch.yml   # korábbi futások
 DRY_RUN=1 node watch.mjs           # helyi próba, küldés és mentés nélkül
 ```
-
-A kulcsszó és a kategória a `watch.mjs` elején állítható (`KEYWORD`, `LIST_URL`).
 
 Ismert korlát: a GitHub ütemezett futásai terhelt időszakban 5–15 percet is késhetnek.

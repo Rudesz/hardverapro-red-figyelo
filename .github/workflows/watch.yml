@@ -1,4 +1,4 @@
-name: Red HDD figyelő
+name: HDD ár-figyelő
 
 on:
   schedule:
