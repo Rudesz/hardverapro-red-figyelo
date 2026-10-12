@@ -18,6 +18,24 @@
         "asztali/SMR típus"
       ],
       "firstSeen": "2026-10-10T21:52:51.000Z"
+    },
+    "7747545": {
+      "title": "Eladó WD Red 10TB WD100EFAX - 2 áthelyezett szektor, törölve, tesztelve",
+      "priceFt": 55000,
+      "ok": false,
+      "problems": [
+        "áthelyezett: 2"
+      ],
+      "firstSeen": "2026-10-12T00:40:29.058Z"
+    },
+    "7747546": {
+      "title": "Eladó Seagate IronWolf Pro 10TB ST10000NE0004 - 56 áthelyezett szektor",
+      "priceFt": 60000,
+      "ok": false,
+      "problems": [
+        "áthelyezett: 56"
+      ],
+      "firstSeen": "2026-10-12T00:40:29.058Z"
     }
   }
 }
