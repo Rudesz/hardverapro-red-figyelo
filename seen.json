@@ -43,6 +43,13 @@
       "ok": true,
       "problems": [],
       "firstSeen": "2026-10-12T13:10:33.217Z"
+    },
+    "7750800": {
+      "title": "Seagate Exos 16TB",
+      "priceFt": 65000,
+      "ok": true,
+      "problems": [],
+      "firstSeen": "2026-10-14T07:30:42.859Z"
     }
   }
 }
