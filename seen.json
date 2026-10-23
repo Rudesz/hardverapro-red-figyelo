@@ -57,6 +57,13 @@
       "ok": true,
       "problems": [],
       "firstSeen": "2026-10-17T09:00:49.293Z"
+    },
+    "7763805": {
+      "title": "Western Digital Gold 3.5 12TB (WD122KRYZ)",
+      "priceFt": 70000,
+      "ok": true,
+      "problems": [],
+      "firstSeen": "2026-10-23T06:40:29.898Z"
     }
   }
 }
