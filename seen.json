@@ -64,6 +64,15 @@
       "ok": true,
       "problems": [],
       "firstSeen": "2026-10-23T06:40:29.898Z"
+    },
+    "7767782": {
+      "title": "Seagate 8TB (hibás)",
+      "priceFt": 10000,
+      "ok": false,
+      "problems": [
+        "hibásként hirdetve"
+      ],
+      "firstSeen": "2026-10-25T16:30:42.641Z"
     }
   }
 }
