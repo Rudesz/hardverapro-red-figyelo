@@ -115,6 +115,24 @@
       "ok": true,
       "problems": [],
       "firstSeen": "2026-11-09T14:20:34.586Z"
+    },
+    "7792856": {
+      "title": "8TB Seagate Archive v2 (ST8000AS0002) eladó, 100/100%, gyári szám: Z840NQRP",
+      "priceFt": 52000,
+      "ok": false,
+      "problems": [
+        "asztali/SMR típus"
+      ],
+      "firstSeen": "2026-11-10T21:00:57.151Z"
+    },
+    "7792866": {
+      "title": "8TB Seagate Archive v2 (ST8000AS0002) eladó, 100/100%, gyári szám: Z8410GBK",
+      "priceFt": 52000,
+      "ok": false,
+      "problems": [
+        "asztali/SMR típus"
+      ],
+      "firstSeen": "2026-11-10T21:00:57.151Z"
     }
   }
 }
