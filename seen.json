@@ -133,6 +133,13 @@
         "asztali/SMR típus"
       ],
       "firstSeen": "2026-11-10T21:00:57.151Z"
+    },
+    "7797662": {
+      "title": "8tb sas",
+      "priceFt": 48000,
+      "ok": true,
+      "problems": [],
+      "firstSeen": "2026-11-14T06:50:33.400Z"
     }
   }
 }
