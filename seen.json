@@ -140,6 +140,15 @@
       "ok": true,
       "problems": [],
       "firstSeen": "2026-11-14T06:50:33.400Z"
+    },
+    "7800464": {
+      "title": "Seagate Exos X18 10TB Sata 100/40 hibás de működő HDD eladó",
+      "priceFt": 30000,
+      "ok": false,
+      "problems": [
+        "bad sector: 60"
+      ],
+      "firstSeen": "2026-11-15T15:20:34.759Z"
     }
   }
 }
