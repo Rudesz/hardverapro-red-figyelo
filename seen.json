@@ -149,6 +149,15 @@
         "bad sector: 60"
       ],
       "firstSeen": "2026-11-15T15:20:34.759Z"
+    },
+    "7812631": {
+      "title": "Seagate 8Tb HDD (SATA, Archive)",
+      "priceFt": 40000,
+      "ok": false,
+      "problems": [
+        "asztali/SMR típus"
+      ],
+      "firstSeen": "2026-11-22T18:40:36.733Z"
     }
   }
 }
