@@ -165,6 +165,15 @@
       "ok": true,
       "problems": [],
       "firstSeen": "2026-11-23T10:30:48.428Z"
+    },
+    "7818533": {
+      "title": "Seagate Barracuda 8TB 100/92",
+      "priceFt": 25000,
+      "ok": false,
+      "problems": [
+        "asztali/SMR típus"
+      ],
+      "firstSeen": "2026-11-26T11:10:34.510Z"
     }
   }
 }
